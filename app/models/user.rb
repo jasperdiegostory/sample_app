@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: users
@@ -23,3 +24,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 end
+=======
+class User < ActiveRecord::Base
+  attr_accessible :email, :name
+end
+>>>>>>> modeling-users

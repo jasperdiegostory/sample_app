@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: users
@@ -89,4 +90,10 @@ describe User do
 
     it { should_not be_valid }
   end
+=======
+require 'spec_helper'
+
+describe User do
+  pending "add some examples to (or delete) #{__FILE__}"
+>>>>>>> modeling-users
 end
