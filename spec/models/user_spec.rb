@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: users
@@ -54,6 +53,16 @@ describe User do
     end
   end
 
+
+  describe "when email format is valid" do
+    it "should be valid" do
+      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses.each do |valid_address|
+        @user.email = valid_address
+        @user.should be_valid
+      end
+    end
+
 	describe "when email format is invalid" do
 		it "should be invalid" do
 			addresses = %w[user@foo,com user_at_foo.org example.user@foo.
@@ -64,15 +73,6 @@ describe User do
 			end
 		end
 	end
-
-	describe "when email format is valid" do
-		it "should be valid" do
-			addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-			addresses.each do |valid_address|
-				@user.email = valid_address
-				@user.should be_valid
-			end
-		end
 
   describe "when email address is already taken" do
     before do
@@ -96,13 +96,5 @@ describe User do
     before { @user.password_confirmation = nil }
     it { should_not be_valid}
    end
-
-    it { should_not be_valid }
   end
-=======
-require 'spec_helper'
-
-describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
->>>>>>> modeling-users
 end
