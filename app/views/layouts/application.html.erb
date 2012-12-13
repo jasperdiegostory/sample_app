@@ -1,10 +1,15 @@
+<!-- application view is a layout file that exists across the application. Find yield, this is where page specific HTML is inserted -->
 <!DOCTYPE html>
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+    <!-- function full_title is not built in; it comes from app/helpers/application_helper.rb . This solves all title questions -->
     <%= stylesheet_link_tag    "application", media: "all" %>
+    <!-- uses built-in function stylesheet_link_tag to include application.css for all media types -->
     <%= javascript_include_tag "application" %>
+    <!-- arranges scss and javascript, part of the asset pipeline -->
     <%= csrf_meta_tags %>
+    <!-- prevents cross-site request forgery -->
     <%= render 'layouts/shim' %>
   </head>
   <body>
@@ -14,6 +19,7 @@
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
   		<%= yield %>
+      <!-- yields the page view -->
   		<%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
   	</div>

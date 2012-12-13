@@ -1,9 +1,13 @@
 <% provide(:title, "Edit user") %> 
+<!-- rails calls provide function and associate :title with "Edit User" -->
+<title>Jasper's App <%= yield(:title) %></title>
+<!-- executes and inserts the result of yield, title, into the template -->
 <h1>Update your profile</h1>
 
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
+    <!-- |xyz| means that xyz is a block variable; it's up to the method to know what to do with the block -->
       <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>

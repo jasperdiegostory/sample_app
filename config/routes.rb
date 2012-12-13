@@ -1,15 +1,15 @@
-SampleApp::Application.routes.draw do
+SampleApp::Application.routes.draw do # Routes corresponds URIs and webpages.
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'  
+  match '/signup',  to: 'users#new' #matches URI to action 'new' in controller 'users'
+  match '/signin',  to: 'sessions#new' #matches URI to action 'new' in controller 'sessions'
+  match '/signout', to: 'sessions#destroy', via: :delete #matches URI to action 'destroy' in controller 'sessions'
+  match '/help',    to: 'static_pages#help' #matches URI to action 'help' in controller 'static_pages'
+  match '/about',   to: 'static_pages#about' #matches URI to action 'about' in controller 'static_pages'
+  match '/contact', to: 'static_pages#contact' #matches URI to action 'contact' in controller 'static_pages'
   
-  root to: 'static_pages#home'
+  root to: 'static_pages#home' #at root go to action 'home' in model 'static_pages'
 
 
   # The priority is based upon order of creation:

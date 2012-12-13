@@ -13,7 +13,7 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
 
-  def current_user=(user)
+  def current_user?(user)
   	user == current_user
   end
 
@@ -28,7 +28,7 @@ module SessionsHelper
   end
 
   def store_location
-    session[:return_to] = request.url
+    session[:return_to] = request.url #request responds to method url
   end
-  
+
 end

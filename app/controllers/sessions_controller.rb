@@ -1,6 +1,6 @@
-class SessionsController < ApplicationController
+class SessionsController < ApplicationController #class SessionsController inherting from Rails class ApplicationController
 
-def new
+def new #function/method new
 end
 
 def create
@@ -12,6 +12,14 @@ def create
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
    end
+end
+
+def current_user
+  @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+end
+
+def current_user?(user)
+  user == current_user
 end
 
 def destroy

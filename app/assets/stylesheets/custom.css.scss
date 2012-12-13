@@ -28,6 +28,7 @@ textarea {
   resize: vertical;
 }
 
+/* associates center class with text-align: center property */
 .center {
   text-align: center;
   h1 {
@@ -101,7 +102,7 @@ footer {
     float: right;
     list-style: none;
     li {
-      float: left;
+      float: left;.
       margin-left: 10px;
     }
   }
@@ -161,7 +162,8 @@ input {
   height: auto !important
 }
 
-#error_explanation {
+/* #means this is a CSS ID = it will only be used once on a page. */
+#error_explanation { 
   color: #f00;
   ul {
     list-style: none;
