@@ -17,7 +17,7 @@ class UsersController < ApplicationController #class UsersController inheriting 
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else #this handles signup failure
-      render 'new'#this will happen if the fields cannot be validated 
+      render 'new' #this will happen if the fields cannot be validated 
   end
 end
 
