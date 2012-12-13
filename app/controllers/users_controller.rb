@@ -3,7 +3,7 @@ class UsersController < ApplicationController #class UsersController inheriting 
   before_filter :correct_user,   only: [:edit, :update]
 
   def show #function/method show
-    @user = User.find(params[:id]) #@user is an instance variable. Automatically available in views. Comes from symbol
+    @user = User.find(params[:id]) #@user is an instance variable. Automatically available in views. We create the current insance of the user by looking up the users parameters based on their ID. This is identical to User.find(1).
   end
 
   def new
@@ -11,12 +11,12 @@ class UsersController < ApplicationController #class UsersController inheriting 
   end
 
   def create
-    @user = User.new(params[:user]) #new method on object User. @user is defined as the parameters for the user symbol :user. A new instance variable @user is created with the parameters of the user
-    if @user.save #this saves the 
-      sign_in @user
+    @user = User.new(params[:user]) #new method on object User. @user is defined as the parameters for the user symbol :user. A new instance variable @user is created with the parameters of the user. This is built to handle signup failure. params returns here a hash of hashes — 
+    if @user.save #this saves the user to the model (database)
+      sign_in @user 
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
-    else
+    else #this handles signup failure
       render 'new'#this will happen if the fields cannot be validated 
   end
 end

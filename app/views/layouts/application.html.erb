@@ -3,7 +3,8 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-    <!-- function full_title is not built in; it comes from app/helpers/application_helper.rb . This solves all title questions -->
+    <!-- function full_title is not built in; it comes from app/helpers/application_helper.rb . This solves all title questions.
+    We're calling the method yield on the symbol title -->
     <%= stylesheet_link_tag    "application", media: "all" %>
     <!-- uses built-in function stylesheet_link_tag to include application.css for all media types -->
     <%= javascript_include_tag "application" %>
@@ -11,17 +12,18 @@
     <%= csrf_meta_tags %>
     <!-- prevents cross-site request forgery -->
     <%= render 'layouts/shim' %>
+    <!-- the = means it is evaluated and inserted. the shim partial is for IE (pre-9) -->
   </head>
   <body>
-  	<%= render 'layouts/header' %>
+  	<%= render 'layouts/header' %> 
+    <!-- this looks for a partial in layouts and renders it -->
   	<div class="container">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
   		<%= yield %>
-      <!-- yields the page view -->
+      <!-- yields the page view; for example, in home it renders what is in home.html.erb -->
   		<%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
   	</div>
   </body>
  </html>

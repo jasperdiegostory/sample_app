@@ -1,5 +1,5 @@
 SampleApp::Application.routes.draw do # Routes corresponds URIs and webpages.
-  resources :users
+  resources :users #ensures rails application responds to RESTful URIs
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new' #matches URI to action 'new' in controller 'users'

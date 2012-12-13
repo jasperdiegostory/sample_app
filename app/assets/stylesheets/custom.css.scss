@@ -30,6 +30,22 @@ textarea {
   }
 }
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,7 +119,7 @@ footer {
   }
 }
 
-/* sidebar */
+/* sidebar available in show page*/
 
 aside {
   section {

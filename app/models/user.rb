@@ -13,10 +13,10 @@
 
 class User < ActiveRecord::Base 
   attr_accessible :name, :email, :password, :password_confirmation 
-  #these attributes, and only these attributes, are accessible (can be modified by outside users)
-  has_secure_password #built in. needs model column "password_digest". built in functionality includes raw passwords are viritual (not persisted to database). this also tests that password is the same as password confirmation, and also that the :password entered matches the password-digest column in the database.
+  # these attributes, and only these attributes, are accessible (can be modified by outside users)
+  has_secure_password # built in. needs model column "password_digest". built in functionality includes raw passwords are viritual (not persisted to database). this also tests that password is the same as password confirmation, and also that the :password entered matches the password-digest column in the database.
 
-  before_save { |user| user.email = email.downcase } #before committing to memory, emails are standardized
+  before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
   validates :name, presence: true, length: { maximum: 50 } # name is validated as long as it exists and is no more than 50 maxs

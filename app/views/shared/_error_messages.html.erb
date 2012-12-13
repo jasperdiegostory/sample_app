@@ -1,7 +1,10 @@
+<!-- this partial is in shared because it will be used potentially across controllers. if there is a user object and if there are errors on that. -->
 <% if @user and @user.errors.any? %>
   <div id="error_explanation">
+    <!-- this is taken from the CSS. It's an ID because it only happens once, which means it will start with #; if it was a class, it'd start with . -->
     <div class="alert alert-error">
       The form contains <%= pluralize(@user.errors.count, "error") %>.
+      <!-- how many errors there are. pluralize adds s to error if count is above 1 -->
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>

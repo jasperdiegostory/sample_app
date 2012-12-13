@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8' # standard rails install
 gem 'bootstrap-sass', '2.0.4' # Bootstrap SASS/CSS
-gem 'bcrypt-ruby', '3.0.1' # used for Authentication
+gem 'bcrypt-ruby', '3.0.1' # used for Authentication (hashes passwords)
 
 group :development, :test do
   gem 'sqlite3', '1.3.5' # for SQL - database management. Easier than postgres, but generally it's bad to use separate development db as production.
