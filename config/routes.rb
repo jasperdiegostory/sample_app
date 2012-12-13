@@ -1,10 +1,10 @@
 SampleApp::Application.routes.draw do # Routes corresponds URIs and webpages.
   resources :users #ensures rails application responds to RESTful URIs
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] #there is no need to edit or show sessions. New is to start a session, create is to make the session (add cookies), and destroy is for sign out
 
   match '/signup',  to: 'users#new' #matches URI to action 'new' in controller 'users'
   match '/signin',  to: 'sessions#new' #matches URI to action 'new' in controller 'sessions'
-  match '/signout', to: 'sessions#destroy', via: :delete #matches URI to action 'destroy' in controller 'sessions'
+  match '/signout', to: 'sessions#destroy', via: :delete #matches URI to action 'destroy' in controller 'sessions'. via: :delete matches this to the HTTP command DELETE
   match '/help',    to: 'static_pages#help' #matches URI to action 'help' in controller 'static_pages'
   match '/about',   to: 'static_pages#about' #matches URI to action 'about' in controller 'static_pages'
   match '/contact', to: 'static_pages#contact' #matches URI to action 'contact' in controller 'static_pages'

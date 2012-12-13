@@ -3,7 +3,7 @@ class UsersController < ApplicationController #class UsersController inheriting 
   before_filter :correct_user,   only: [:edit, :update]
 
   def show #function/method show
-    @user = User.find(params[:id]) #@user is an instance variable. Automatically available in views. We create the current insance of the user by looking up the users parameters based on their ID. This is identical to User.find(1).
+    @user = User.find(params[:id]) #@user is an instance variable. Automatically available in views. We create the current insance of the user by looking up the users parameters based on their ID. This is identical to User.find(1) for user(1).
   end
 
   def new
