@@ -7,7 +7,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-    <!-- |xyz| means that xyz is a block variable; it's up to the method to know what to do with the block -->
+    <!-- |xyz| means that xyz is a block variable; it's up to the method to know what to do with the block. The form_for is identical to that with the new user, the difference is that Rails knows whether the user is in the system already. When consctructing the form_for(@user), Rails uses POST if @user.new_record? (from Active Record, it's a boolean function obv) is true and PUT is false-->
       <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>

@@ -8,7 +8,9 @@ module SessionsHelper
     user == current_user
   end
 
-   def sign_in(user)
+   def sign_in(user) #a new remember token is created everytime a user sign's in.
+    user.create_remember_token 
+    user.save
     cookies.permanent[:remember_token] = user.remember_token
     current_user = user
   end  
@@ -17,17 +19,19 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  def sign_out
+  def sign_out #on sign out, the cookies are deleted and a new remember token is created. This is for security. (I kinda made this!)
     cookies.delete(:remember_token)
+    user.create_remember_token 
+    user.save
   end
 
   def redirect_back_or(default)
-    redirect_to(session[:return_to] || default )
-    session.delete(:return_to)
+    redirect_to(session[:return_to] || default ) # session is provided by rails, and is like an instance of the cookies variable. The session expires upon browser close.
+    session.delete(:return_to) 
   end
 
   def store_location
-    session[:return_to] = request.url #request responds to method url
+    session[:return_to] = request.url #request responds to method url. we use the request object to get the url that was requested by the non-signed in user.
   end
 
 end
