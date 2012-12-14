@@ -1,5 +1,5 @@
 class UsersController < ApplicationController #class UsersController inheriting from Rails class ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update] # this method is called before anything specified, here edit and update. this prevents non-signed in people from editing and updating users.
+  before_filter :signed_in_user, only: [:index, :edit, :update] # this method is called before anything specified, here edit and update. this prevents non-signed in people from editing and updating users, or from seeing the all-user index.
   before_filter :correct_user,   only: [:edit, :update] # this is similar to above.
 
   def show #function/method show
@@ -16,9 +16,14 @@ class UsersController < ApplicationController #class UsersController inheriting 
       sign_in @user 
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
+      puts "LOOOK AT ME HERE"
     else #this handles signup failure
       render 'new' #this will happen if the fields cannot be validated 
   end
+end
+
+def index #user index for "all users"
+  @users = User.all
 end
 
 def edit #this just renders the edit.html.erb file. The update is the actual process; edit the page.

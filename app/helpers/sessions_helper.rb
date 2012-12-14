@@ -9,8 +9,6 @@ module SessionsHelper
   end
 
    def sign_in(user) #a new remember token is created everytime a user sign's in.
-    user.create_remember_token 
-    user.save
     cookies.permanent[:remember_token] = user.remember_token
     current_user = user
   end  
@@ -21,8 +19,6 @@ module SessionsHelper
 
   def sign_out #on sign out, the cookies are deleted and a new remember token is created. This is for security. (I kinda made this!)
     cookies.delete(:remember_token)
-    user.create_remember_token 
-    user.save
   end
 
   def redirect_back_or(default)
